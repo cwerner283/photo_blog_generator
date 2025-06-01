@@ -1,0 +1,21 @@
+# Virtual environment
+.venv/
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# Environment variables file
+.env
+
+# Node modules (for Tailwind, etc.)
+node_modules/
+
+# Generated Tailwind output
+app/static/css/output.css
+
+# macOS system files
+*.DS_Store
+
+# Flask instance folder (if you add one later)
+instance/
