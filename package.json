@@ -1,0 +1,15 @@
+{
+  "name": "photo_blog_generator",
+  "version": "1.0.0",
+  "description": "AI Photo Blog Generator frontend assets",
+  "scripts": {
+    "build:css": "tailwindcss -i ./input.css -o ./app/static/css/output.css",
+    "watch:css": "tailwindcss -i ./input.css -o ./app/static/css/output.css --watch"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3",
+    "@tailwindcss/forms": "^0.5.7"
+  }
+}

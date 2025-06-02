@@ -1,0 +1,200 @@
+{% extends "base.html" %}
+
+{% block title %}Generate Your AI Blog Post{% endblock %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto bg-white p-6 sm:p-8 rounded-xl shadow-xl">
+  <header class="text-center mb-8">
+    <h1 class="text-3xl sm:text-4xl font-bold text-indigo-700">
+      Generate Blog Posts from Your Photos
+    </h1>
+    <p class="text-slate-600 mt-2">
+      Upload your photos, and let AI craft engaging blog content for you!
+    </p>
+  </header>
+
+  <section class="mb-8">
+    <label for="photoUpload" class="block text-sm font-medium text-slate-700 mb-1">Upload Photo(s)</label>
+    <input type="file" id="photoUpload" name="photos" multiple accept="image/jpeg, image/png"
+      class="block w-full text-sm text-slate-500 p-2.5 border border-slate-300 rounded-lg shadow-sm file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 cursor-pointer" />
+  </section>
+
+  <section class="mb-8">
+    <label for="businessDescription" class="block text-sm font-medium text-slate-700 mb-1">Briefly describe your blog
+      theme (optional):</label>
+    <input type="text" id="businessDescription" name="businessDescription"
+      placeholder="e.g., A travel blog focusing on adventure photography"
+      class="block w-full text-sm p-2.5 border border-slate-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" />
+  </section>
+
+  <section class="mb-8">
+    <h2 class="text-lg font-semibold text-slate-700 mb-2">Choose a Voice Profile</h2>
+    <label class="flex items-center mb-2">
+      <input type="radio" name="voice_mode" value="default" checked class="form-radio text-indigo-600" />
+      <span class="ml-2 text-slate-700">No Voice (Default)</span>
+    </label>
+    <label class="flex items-center mb-2">
+      <input type="radio" name="voice_mode" value="custom" class="form-radio text-indigo-600" />
+      <span class="ml-2 text-slate-700">Enter my own voice</span>
+    </label>
+    <input id="customVoiceInput" name="tone" type="text" placeholder="e.g. Wry, candid travelogue"
+      class="mt-1 mb-4 block w-full text-sm p-2.5 border border-slate-300 rounded-lg shadow-sm
+             focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed" disabled />
+    <label class="flex items-center mb-2">
+      <input type="radio" name="voice_mode" value="predefined" class="form-radio text-indigo-600" />
+      <span class="ml-2 text-slate-700">Pick a Curated Voice Profile</span>
+    </label>
+    <div id="voiceAccordion" class="border border-slate-200 rounded-lg mb-6 overflow-hidden hidden">
+      <button type="button"
+        class="w-full flex items-center justify-between px-4 py-3 bg-slate-100 hover:bg-slate-200 border-b border-slate-200 text-left focus:outline-none"
+        aria-expanded="false" data-target="panel-bourdain">
+        <div class="flex items-center">
+          <svg class="h-6 w-6 text-indigo-600 mr-3" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M5 4h14v2H5zM5 9h14v2H5zM5 14h14v2H5zM5 19h14v2H5z" />
+          </svg>
+          <span class="font-medium text-slate-700">Anthony Bourdain</span>
+        </div>
+        <svg class="accordion-icon h-5 w-5 text-gray-500 transform transition-transform duration-200" fill="none"
+          stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <div id="panel-bourdain" class="hidden px-4 py-3 bg-white">
+        <div class="text-sm text-slate-600">
+          <p class="mb-2 italic">“Wry, candid travelogue with raw observations.”</p>
+          <button type="button"
+            class="bg-indigo-600 text-white text-sm font-medium px-3 py-1 rounded hover:bg-indigo-700"
+            data-tone="Wry, candid travelogue with raw observations." data-persona="Anthony Bourdain">Use Anthony’s
+            Voice</button>
+        </div>
+      </div>
+      <button type="button"
+        class="w-full flex items-center justify-between px-4 py-3 bg-slate-100 hover:bg-slate-200 border-b border-slate-200 text-left focus:outline-none"
+        aria-expanded="false" data-target="panel-matt">
+        <div class="flex items-center">
+          <svg class="h-6 w-6 text-indigo-600 mr-3" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M5 4h14v2H5zM5 9h14v2H5zM5 14h14v2H5zM5 19h14v2H5z" />
+          </svg>
+          <span class="font-medium text-slate-700">Nomadic Matt</span>
+        </div>
+        <svg class="accordion-icon h-5 w-5 text-gray-500 transform transition-transform duration-200" fill="none"
+          stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <div id="panel-matt" class="hidden px-4 py-3 bg-white">
+        <div class="text-sm text-slate-600">
+          <p class="mb-2 italic">“Informative, budget-savvy, practical travel advice.”</p>
+          <button type="button"
+            class="bg-indigo-600 text-white text-sm font-medium px-3 py-1 rounded hover:bg-indigo-700"
+            data-tone="Informative, budget-savvy, practical travel advice." data-persona="Nomadic Matt">Use Matt’s
+            Voice</button>
+        </div>
+      </div>
+      <button type="button"
+        class="w-full flex items-center justify-between px-4 py-3 bg-slate-100 hover:bg-slate-200 border-b border-slate-200 text-left focus:outline-none"
+        aria-expanded="false" data-target="panel-blonde">
+        <div class="flex items-center">
+          <svg class="h-6 w-6 text-indigo-600 mr-3" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M5 4h14v2H5zM5 9h14v2H5zM5 14h14v2H5zM5 19h14v2H5z" />
+          </svg>
+          <span class="font-medium text-slate-700">The Blonde Abroad</span>
+        </div>
+        <svg class="accordion-icon h-5 w-5 text-gray-500 transform transition-transform duration-200" fill="none"
+          stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <div id="panel-blonde" class="hidden px-4 py-3 bg-white">
+        <div class="text-sm text-slate-600">
+          <p class="mb-2 italic">“Bright, inspirational solo-female travel style.”</p>
+          <button type="button"
+            class="bg-indigo-600 text-white text-sm font-medium px-3 py-1 rounded hover:bg-indigo-700"
+            data-tone="Bright, inspirational solo-female travel style." data-persona="The Blonde Abroad">Use Blonde’s
+            Voice</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <input type="hidden" name="persona" id="personaInput" value="" />
+
+  <button id="generateBlogBtn"
+    class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition duration-150 ease-in-out shadow-md hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center">
+    <svg id="buttonIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+      stroke="currentColor" class="w-5 h-5 mr-2">
+      <path stroke-linecap="round" stroke-linejoin="round"
+        d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L1.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.25 12L17 13.75l-1.25-1.75L13.75 12l1.75-1.25L17 8.75l1.25 1.75L20.25 12l-1.75 1.25L17 15.25l-1.25-1.75L13.75 12zM12 16.75a4.46 4.46 0 003.09-1.313l2.846-.813-2.846-.813a4.46 4.46 0 00-3.09-1.313L9 12.5l-.813 1.757a4.46 4.46 0 00-3.09 1.313L1.25 16.5l2.846.813a4.46 4.46 0 003.09 1.313L9 20.75l.813-2.187a4.46 4.46 0 003.09-1.313L15.75 16.5l-2.846-.813A4.46 4.46 0 0012 16.75z" />
+    </svg>
+    <span id="buttonText">Generate Blog Post</span>
+  </button>
+
+  <div id="loadingIndicator" class="mt-6 text-center hidden">
+    <div class="inline-block animate-spin rounded-full h-10 w-10 border-t-4 border-b-4 border-indigo-600"></div>
+    <p class="text-indigo-600 mt-3 font-medium">Crafting your masterpiece, please wait...</p>
+  </div>
+
+  <div id="errorMessages" class="mt-6 p-4 bg-red-100 text-red-700 border border-red-300 rounded-lg hidden"></div>
+
+  <article class="mt-10 bg-slate-50 p-6 rounded-lg shadow hidden" id="blogPostContainer">
+    <h2 class="text-2xl font-semibold text-slate-700 mb-4 !mt-0" id="blogPostTitlePlaceholder">Generated Blog Post:</h2>
+    <div id="blogPostEditor" class="bg-white border border-slate-300 rounded-md" style="min-height: 300px;">
+    </div>
+
+    <div class="mt-6 flex flex-wrap gap-3 sm:gap-4">
+      <button id="copyHtmlBtn"
+        class="bg-indigo-500 hover:bg-indigo-600 text-white px-3 py-2 sm:px-4 rounded text-xs sm:text-sm font-medium flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 mr-1.5" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+        </svg>
+        Copy HTML
+      </button>
+      <button id="copyMarkdownBtn"
+        class="bg-sky-500 hover:bg-sky-600 text-white px-3 py-2 sm:px-4 rounded text-xs sm:text-sm font-medium flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 mr-1.5" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.414L20 10M4.828 17A2.828 2.828 0 007.656 20l6.414-6.414-2.828-2.828L4.828 17z" />
+        </svg>
+        Copy Markdown
+      </button>
+      <button id="downloadHtmlBtn"
+        class="bg-slate-600 hover:bg-slate-700 text-white px-3 py-2 sm:px-4 rounded text-xs sm:text-sm font-medium flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 mr-1.5" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+        </svg>
+        Download HTML
+      </button>
+      <button id="downloadMarkdownBtn"
+        class="bg-slate-500 hover:bg-slate-600 text-white px-3 py-2 sm:px-4 rounded text-xs sm:text-sm font-medium flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 mr-1.5" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+        </svg>
+        Download .md
+      </button>
+    </div>
+    <div id="copyStatus" class="text-sm text-green-600 mt-2 h-5"></div>
+  </article>
+
+  {% if app_debug %}
+  <details class="mt-8 bg-slate-800 text-slate-100 p-4 rounded-lg shadow">
+    <summary class="cursor-pointer font-medium text-sm hover:text-indigo-300">Debug: View Generated Prompt</summary>
+    <pre id="debugPrompt" class="mt-2 text-xs overflow-x-auto max-h-96 whitespace-pre-wrap"></pre>
+  </details>
+  {% endif %}
+</div>
+{% endblock %}
+
+{% block scripts_extra %}
+<link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet" />
+<script src="https://cdn.quilljs.com/1.3.7/quill.js"></script>
+
+<script src="https://unpkg.com/turndown/dist/turndown.js"></script>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}
