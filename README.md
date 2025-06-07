@@ -1,5 +1,3 @@
-Based on the codebase context, you're asking for a comprehensive README for the **AI Photo Blog Generator** project, which is a Flask web application that uses OpenAI's GPT-4o model to generate blog posts from uploaded photos.
-
 # AI Photo Blog Generator
 
 An intelligent web application that transforms your photos into engaging blog posts using AI-powered image analysis and content generation.
