@@ -292,8 +292,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- Action Buttons: Copy and Download ---
-  const copyBtn = document.getElementById('copyBtn'); // Assumes your HTML has id="copyBtn"
-  const downloadBtn = document.getElementById('downloadBtn'); // Assumes your HTML has id="downloadBtn"
+  const copyBtn = document.getElementById('copyHtmlBtn'); // Match HTML button id
+  const downloadBtn = document.getElementById('downloadHtmlBtn'); // Match HTML button id
 
   if (copyBtn && quill) {
     copyBtn.addEventListener('click', () => {
