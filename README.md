@@ -20,7 +20,7 @@ The AI Photo Blog Generator combines computer vision and natural language proces
 
 - **Backend**: Flask web framework with Python
 - **AI Services**: OpenAI GPT-4o for vision and text generation
-- **Frontend**: Vanilla JavaScript with Quill.js rich text editor
+- **Frontend**: Vanilla JavaScript frontend (Flask templates) and a new React+Next.js app in `frontend/`
 - **Styling**: Tailwind CSS for responsive design
 - **Image Processing**: PIL (Python Imaging Library) for EXIF extraction
 
@@ -66,6 +66,13 @@ The AI Photo Blog Generator combines computer vision and natural language proces
    npm install
    npm run build-css
    ```
+
+6. **Run Next.js frontend**
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
 ## Usage
 
