@@ -25,7 +25,7 @@ def get_exif_data(image_bytes):
     }
     try:
         img = Image.open(io.BytesIO(image_bytes))
-        exif = img._getexif()
+        exif = img.getexif()
 
         if exif:
             for tag_id, value in exif.items():
