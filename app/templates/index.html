@@ -3,20 +3,20 @@
 {% block title %}Generate Your AI Blog Post{% endblock %}
 
 {% block content %}
-<div class="max-w-3xl mx-auto bg-white p-6 sm:p-8 rounded-xl shadow-xl">
+<div class="max-w-3xl mx-auto bg-gray-800 p-6 sm:p-8 rounded-xl shadow-2xl border border-gray-700">
   <header class="text-center mb-8">
-    <h1 class="text-3xl sm:text-4xl font-bold text-indigo-700">
+    <h1 class="text-3xl sm:text-4xl font-bold text-white mb-2">
       Generate Blog Posts from Your Photos
     </h1>
-    <p class="text-slate-600 mt-2">
+    <p class="text-gray-300 mt-2">
       Upload your photos, and let AI craft engaging blog content for you!
     </p>
   </header>
 
   <section class="mb-8">
-    <label for="photoUpload" class="block text-sm font-medium text-slate-700 mb-1">Upload Photo(s)</label>
+    <label for="photoUpload" class="block text-sm font-medium text-gray-200 mb-1">Upload Photo(s)</label>
     <input type="file" id="photoUpload" name="photos" multiple accept="image/jpeg, image/png"
-      class="block w-full text-sm text-slate-500 p-2.5 border border-slate-300 rounded-lg shadow-sm file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 cursor-pointer" />
+      class="block w-full text-sm text-gray-300 p-2.5 border border-gray-600 rounded-lg shadow-sm file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 cursor-pointer" />
   </section>
 
   <section class="mb-8">
@@ -44,72 +44,72 @@
       <input type="radio" name="voice_mode" value="predefined" class="form-radio text-indigo-600" />
       <span class="ml-2 text-slate-700">Pick a Curated Voice Profile</span>
     </label>
-    <div id="voiceAccordion" class="border border-slate-200 rounded-lg mb-6 overflow-hidden hidden">
+    <div id="voiceAccordion" class="border border-gray-600 rounded-lg mb-6 overflow-hidden bg-gray-700 hidden">
       <button type="button"
-        class="w-full flex items-center justify-between px-4 py-3 bg-slate-100 hover:bg-slate-200 border-b border-slate-200 text-left focus:outline-none"
+        class="w-full flex items-center justify-between px-4 py-3 bg-gray-700 hover:bg-gray-600 border-b border-gray-600 text-left focus:outline-none focus:ring-2 focus:ring-blue-500"
         aria-expanded="false" data-target="panel-bourdain">
         <div class="flex items-center">
-          <svg class="h-6 w-6 text-indigo-600 mr-3" fill="currentColor" viewBox="0 0 24 24">
+          <svg class="h-6 w-6 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 24 24">
             <path d="M5 4h14v2H5zM5 9h14v2H5zM5 14h14v2H5zM5 19h14v2H5z" />
           </svg>
-          <span class="font-medium text-slate-700">Anthony Bourdain</span>
+          <span class="font-medium text-white">Anthony Bourdain</span>
         </div>
         <svg class="accordion-icon h-5 w-5 text-gray-500 transform transition-transform duration-200" fill="none"
           stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
         </svg>
       </button>
-      <div id="panel-bourdain" class="hidden px-4 py-3 bg-white">
-        <div class="text-sm text-slate-600">
+      <div id="panel-bourdain" class="hidden px-4 py-3 bg-gray-800">
+        <div class="text-sm text-gray-300">
           <p class="mb-2 italic">“Wry, candid travelogue with raw observations.”</p>
           <button type="button"
-            class="bg-indigo-600 text-white text-sm font-medium px-3 py-1 rounded hover:bg-indigo-700"
+            class="bg-blue-600 text-white text-sm font-medium px-3 py-1 rounded hover:bg-blue-500"
             data-tone="Wry, candid travelogue with raw observations." data-persona="Anthony Bourdain">Use Anthony’s
             Voice</button>
         </div>
       </div>
       <button type="button"
-        class="w-full flex items-center justify-between px-4 py-3 bg-slate-100 hover:bg-slate-200 border-b border-slate-200 text-left focus:outline-none"
+        class="w-full flex items-center justify-between px-4 py-3 bg-gray-700 hover:bg-gray-600 border-b border-gray-600 text-left focus:outline-none focus:ring-2 focus:ring-blue-500"
         aria-expanded="false" data-target="panel-matt">
         <div class="flex items-center">
-          <svg class="h-6 w-6 text-indigo-600 mr-3" fill="currentColor" viewBox="0 0 24 24">
+          <svg class="h-6 w-6 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 24 24">
             <path d="M5 4h14v2H5zM5 9h14v2H5zM5 14h14v2H5zM5 19h14v2H5z" />
           </svg>
-          <span class="font-medium text-slate-700">Nomadic Matt</span>
+          <span class="font-medium text-white">Nomadic Matt</span>
         </div>
         <svg class="accordion-icon h-5 w-5 text-gray-500 transform transition-transform duration-200" fill="none"
           stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
         </svg>
       </button>
-      <div id="panel-matt" class="hidden px-4 py-3 bg-white">
-        <div class="text-sm text-slate-600">
+      <div id="panel-matt" class="hidden px-4 py-3 bg-gray-800">
+        <div class="text-sm text-gray-300">
           <p class="mb-2 italic">“Informative, budget-savvy, practical travel advice.”</p>
           <button type="button"
-            class="bg-indigo-600 text-white text-sm font-medium px-3 py-1 rounded hover:bg-indigo-700"
+            class="bg-blue-600 text-white text-sm font-medium px-3 py-1 rounded hover:bg-blue-500"
             data-tone="Informative, budget-savvy, practical travel advice." data-persona="Nomadic Matt">Use Matt’s
             Voice</button>
         </div>
       </div>
       <button type="button"
-        class="w-full flex items-center justify-between px-4 py-3 bg-slate-100 hover:bg-slate-200 border-b border-slate-200 text-left focus:outline-none"
+        class="w-full flex items-center justify-between px-4 py-3 bg-gray-700 hover:bg-gray-600 border-b border-gray-600 text-left focus:outline-none focus:ring-2 focus:ring-blue-500"
         aria-expanded="false" data-target="panel-blonde">
         <div class="flex items-center">
-          <svg class="h-6 w-6 text-indigo-600 mr-3" fill="currentColor" viewBox="0 0 24 24">
+          <svg class="h-6 w-6 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 24 24">
             <path d="M5 4h14v2H5zM5 9h14v2H5zM5 14h14v2H5zM5 19h14v2H5z" />
           </svg>
-          <span class="font-medium text-slate-700">The Blonde Abroad</span>
+          <span class="font-medium text-white">The Blonde Abroad</span>
         </div>
         <svg class="accordion-icon h-5 w-5 text-gray-500 transform transition-transform duration-200" fill="none"
           stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
         </svg>
       </button>
-      <div id="panel-blonde" class="hidden px-4 py-3 bg-white">
-        <div class="text-sm text-slate-600">
+      <div id="panel-blonde" class="hidden px-4 py-3 bg-gray-800">
+        <div class="text-sm text-gray-300">
           <p class="mb-2 italic">“Bright, inspirational solo-female travel style.”</p>
           <button type="button"
-            class="bg-indigo-600 text-white text-sm font-medium px-3 py-1 rounded hover:bg-indigo-700"
+            class="bg-blue-600 text-white text-sm font-medium px-3 py-1 rounded hover:bg-blue-500"
             data-tone="Bright, inspirational solo-female travel style." data-persona="The Blonde Abroad">Use Blonde’s
             Voice</button>
         </div>
@@ -119,7 +119,7 @@
   <input type="hidden" name="persona" id="personaInput" value="" />
 
   <button id="generateBlogBtn"
-    class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition duration-150 ease-in-out shadow-md hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center">
+    class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 transition duration-150 ease-in-out shadow-lg hover:shadow-xl disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center">
     <svg id="buttonIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
       stroke="currentColor" class="w-5 h-5 mr-2">
       <path stroke-linecap="round" stroke-linejoin="round"
@@ -135,14 +135,14 @@
 
   <div id="errorMessages" class="mt-6 p-4 bg-red-100 text-red-700 border border-red-300 rounded-lg hidden"></div>
 
-  <article class="mt-10 bg-slate-50 p-6 rounded-lg shadow hidden" id="blogPostContainer">
-    <h2 class="text-2xl font-semibold text-slate-700 mb-4 !mt-0" id="blogPostTitlePlaceholder">Generated Blog Post:</h2>
-    <div id="blogPostEditor" class="bg-white border border-slate-300 rounded-md" style="min-height: 300px;">
+  <article class="mt-10 bg-gray-700 p-6 rounded-lg shadow-lg border border-gray-600 hidden" id="blogPostContainer">
+    <h2 class="text-2xl font-semibold text-white mb-4 !mt-0" id="blogPostTitlePlaceholder">Generated Blog Post:</h2>
+    <div id="blogPostEditor" class="bg-gray-800 border border-gray-600 rounded-md text-white" style="min-height: 300px;">
     </div>
 
     <div class="mt-6 flex flex-wrap gap-3 sm:gap-4">
       <button id="copyHtmlBtn"
-        class="bg-indigo-500 hover:bg-indigo-600 text-white px-3 py-2 sm:px-4 rounded text-xs sm:text-sm font-medium flex items-center">
+        class="bg-green-600 hover:bg-green-500 text-white px-3 py-2 sm:px-4 rounded text-xs sm:text-sm font-medium flex items-center shadow-md">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 mr-1.5" fill="none" viewBox="0 0 24 24"
           stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round"
@@ -151,7 +151,7 @@
         Copy HTML
       </button>
       <button id="copyMarkdownBtn"
-        class="bg-sky-500 hover:bg-sky-600 text-white px-3 py-2 sm:px-4 rounded text-xs sm:text-sm font-medium flex items-center">
+        class="bg-purple-600 hover:bg-purple-500 text-white px-3 py-2 sm:px-4 rounded text-xs sm:text-sm font-medium flex items-center shadow-md">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 mr-1.5" fill="none" viewBox="0 0 24 24"
           stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round"
@@ -160,7 +160,7 @@
         Copy Markdown
       </button>
       <button id="downloadHtmlBtn"
-        class="bg-slate-600 hover:bg-slate-700 text-white px-3 py-2 sm:px-4 rounded text-xs sm:text-sm font-medium flex items-center">
+        class="bg-orange-600 hover:bg-orange-500 text-white px-3 py-2 sm:px-4 rounded text-xs sm:text-sm font-medium flex items-center shadow-md">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 mr-1.5" fill="none" viewBox="0 0 24 24"
           stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round"
@@ -169,7 +169,7 @@
         Download HTML
       </button>
       <button id="downloadMarkdownBtn"
-        class="bg-slate-500 hover:bg-slate-600 text-white px-3 py-2 sm:px-4 rounded text-xs sm:text-sm font-medium flex items-center">
+        class="bg-pink-600 hover:bg-pink-500 text-white px-3 py-2 sm:px-4 rounded text-xs sm:text-sm font-medium flex items-center shadow-md">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 mr-1.5" fill="none" viewBox="0 0 24 24"
           stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round"
