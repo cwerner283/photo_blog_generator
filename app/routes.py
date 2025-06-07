@@ -1,7 +1,11 @@
 # app/routes.py
 from flask import Blueprint, render_template, request, jsonify, current_app
 from .utils.exif_utils import get_exif_data
-from .services.openai_service import get_image_description_openai, generate_blog_post_openai
+from .services.openai_service import (
+    get_image_description_openai,
+    generate_blog_post_openai,
+    analyze_blog_post_openai,
+)
 
 bp = Blueprint('main', __name__)
 
@@ -77,8 +81,28 @@ def generate_blog_api():
     blog_context = f'The blog is about: "{business_desc_input}".' if business_desc_input else \
                    'The blog aims to share engaging stories and visual narratives.'
 
+    persona_instructions = ""
+    persona_lower = persona_selected.lower()
+    if persona_lower == "anthony bourdain":
+        persona_instructions = (
+            "Channel raw honesty, cultural curiosity, and profound observations "
+            "about human nature. Include moments of vulnerability and authentic "
+            "cultural encounters."
+        )
+    elif persona_lower == "nomadic matt":
+        persona_instructions = (
+            "Focus on personal growth through budget travel, authentic local "
+            "interactions, and life lessons learned from stepping outside "
+            "comfort zones."
+        )
+    elif persona_lower == "the blonde abroad":
+        persona_instructions = (
+            "Emphasize empowerment, solo female travel insights, and "
+            "inspirational moments of self-discovery and confidence building."
+        )
+
     base_prompt = (
-        "Based on the photo information provided below, please write a blog post.\n"
+        "Based on the photo information provided below, craft a heartfelt travel blog post.\n"
         "The blog post MUST start with a catchy and relevant title (e.g., '## My Awesome Title').\n"
         f"Follow these stylistic instructions:\n"
         f"  - Tone: {tone_selected or 'engaging and descriptive'}\n"
@@ -86,8 +110,15 @@ def generate_blog_api():
         f"  - Target Audience: {audience}\n"
         f"  - Primary Focus/Angle: {focus}\n"
         f"  - Desired Length: Approximately {length} words.\n"
-        "Structure the post with clear paragraphs. Use descriptive language. "
-        "Integrate details from all photos into a cohesive narrative. "
+        "Before writing, identify the emotional undertones in each photo description. "
+        "Consider feelings these moments might evoke: wonder, solitude, connection, challenge, or peace. "
+        "Include sensory details like sounds, smells, textures, and temperatures. "
+        "Describe physical sensations and emotional responses. "
+        "Use metaphors and imagery that connect to universal human experiences. "
+        "Begin with a moment of tension or anticipation, build to an emotional climax, "
+        "and end with reflection on how the experience changed you. "
+        f"{persona_instructions}\n"
+        "Structure the post with clear paragraphs. Integrate details from all photos into a cohesive narrative. "
         "Conclude with a thoughtful closing remark or call to action if appropriate."
     )
 
@@ -108,6 +139,7 @@ def generate_blog_api():
     current_app.logger.info(f"Final prompt length: {len(final_prompt)} characters.")
 
     blog_post = generate_blog_post_openai(final_prompt)
+    analysis = analyze_blog_post_openai(blog_post, persona_selected or "Default AI Writer")
 
     if blog_post.startswith("Error generating"):
         return jsonify({
@@ -118,5 +150,6 @@ def generate_blog_api():
     return jsonify({
         "blog_post": blog_post,
         "persona": persona_selected,
-        "debug_prompt": final_prompt if current_app.debug else None
+        "analysis": analysis,
+        "debug_prompt": final_prompt if current_app.debug else None,
     })

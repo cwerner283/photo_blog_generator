@@ -64,10 +64,21 @@ def generate_blog_post_openai(prompt):
         response = oai_client.chat.completions.create(
             model="gpt-4o",
             messages=[
-                {"role": "system", "content": "You are an expert blog writer, skilled in creating engaging and well-structured content based on provided information."},
-                {"role": "user", "content": prompt}
+                {
+                    "role": "system",
+                    "content": (
+                        "You are a master travel storyteller who crafts deeply "
+                        "moving, authentic narratives from travel experiences. "
+                        "Your writing should capture not just what happened, "
+                        "but how it felt\u2014the emotions, transformations, and "
+                        "human connections that make travel meaningful. "
+                        "Create content that resonates on a visceral level, "
+                        "making readers feel like they were there."
+                    ),
+                },
+                {"role": "user", "content": prompt},
             ],
-            temperature=0.75,
+            temperature=0.85,
             max_tokens=1200,
             top_p=0.95,
         )
@@ -75,3 +86,37 @@ def generate_blog_post_openai(prompt):
     except Exception as e:
         current_app.logger.error(f"Error calling OpenAI Text Generation API: {e}", exc_info=True)
         return "Error generating blog post: Could not connect to AI writing service or an internal error occurred."
+
+
+def analyze_blog_post_openai(blog_post, persona):
+    """Analyze the generated blog post for emotional resonance and other metrics."""
+    oai_client = _get_openai_client()
+    analysis_prompt = (
+        "Evaluate the following blog post and provide a short JSON report with "
+        "the following fields: emotional_impact (1-10), authenticity (1-10), "
+        "persona_consistency (1-10), sensory_detail_richness (1-10), "
+        "story_arc_completeness (1-10). Focus on how heartfelt and resonant "
+        "the writing is."
+    )
+    try:
+        response = oai_client.chat.completions.create(
+            model="gpt-4o",
+            messages=[
+                {"role": "system", "content": "You are an expert writing coach."},
+                {
+                    "role": "user",
+                    "content": (
+                        analysis_prompt
+                        + f"\n\nPersona: {persona}\n\nBlog Post:\n{blog_post}"
+                    ),
+                },
+            ],
+            temperature=0.3,
+            max_tokens=150,
+        )
+        return response.choices[0].message.content.strip()
+    except Exception as e:
+        current_app.logger.error(
+            f"Error calling OpenAI Analysis API: {e}", exc_info=True
+        )
+        return "Error analyzing blog post."
