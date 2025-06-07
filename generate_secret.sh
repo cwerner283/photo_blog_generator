@@ -2,13 +2,13 @@
 #
 # generate_secret.sh
 # 
-# Generates a 24‐byte random Flask SECRET_KEY (hex‐encoded),
+# Generates a 24-byte random Flask SECRET_KEY (hex-encoded),
 # writes it to .env (overwriting any existing FLASK_SECRET_KEY),
 # and preserves any other lines in .env (like OPENAI_API_KEY).
 
 ENV_FILE=".env"
 
-# 1. Generate a new 24‐byte hex string
+# 1. Generate a new 24-byte hex string
 NEW_KEY=$(python3 - <<EOF
 import os
 print(os.urandom(24).hex())
